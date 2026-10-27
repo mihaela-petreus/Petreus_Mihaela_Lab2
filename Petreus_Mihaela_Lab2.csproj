@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Index.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include=".github\upgrades\scenarios\nuget-package-upgrade\tasks\01-upgrade-sqlclient\progress-details.md" />
   </ItemGroup>
 

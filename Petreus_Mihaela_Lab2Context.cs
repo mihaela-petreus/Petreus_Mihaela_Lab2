@@ -5,6 +5,7 @@ namespace Petreus_Mihaela_Lab2
 {
     public class Petreus_Mihaela_Lab2Context : DbContext
     {
+        public DbSet<Petreus_Mihaela_Lab2.Models.Category> Category { get; set; } = default!;
         public Petreus_Mihaela_Lab2Context(DbContextOptions<Petreus_Mihaela_Lab2Context> options)
             : base(options)
         {
