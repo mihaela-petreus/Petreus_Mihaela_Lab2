@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Petreus_Mihaela_Lab2.Models;
 
-namespace Petreus_Mihaela_Lab2.Pages.BookPages;
+namespace Petreus_Mihaela_Lab2.Pages.Books;
 
 public class DetailsModel : PageModel
 {
@@ -22,7 +22,13 @@ public class DetailsModel : PageModel
             return NotFound();
         }
 
-        var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+        var book = await _context.Book
+            .Include(b => b.Publisher)
+            .Include(b => b.Author)
+            .Include(b => b.BookCategories)
+            .ThenInclude(b => b.Category)
+            .FirstOrDefaultAsync(m => m.ID == id);
+
         if (book is null)
         {
             return NotFound();
